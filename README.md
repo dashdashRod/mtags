@@ -1,6 +1,6 @@
 # Debugging Tool
 
-A small debugging utility for inspecting behavior in a specific target application.
+A small debugging utility for inspecting behavior.
 
 This project is built with Meson and uses local Wayland protocol definitions from the `protocols/` directory. Generated files and build output are intentionally not committed.
 
