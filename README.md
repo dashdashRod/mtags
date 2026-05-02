@@ -52,6 +52,6 @@ meson compile -C build
     └── main.c
 ```
 
-** Note **
+**Note**
 
 For this specific project it was necessary to install wlroots 0.19.3, other versions may not work because the wlroots API can change between releases due the nature of this project (MangoWM).
