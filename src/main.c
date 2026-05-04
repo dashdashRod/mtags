@@ -253,11 +253,13 @@ static void on_global(void *data, struct wl_registry *r, uint32_t name,
         ext_workspace_manager_v1_add_listener(ws_manager, &mgr_listener, NULL);
         printf("bound: %s v%u\n", iface, version);
     } else if (strcmp(iface, zwlr_foreign_toplevel_manager_v1_interface.name) == 0) {
-        tl_manager = wl_registry_bind(r, name, &zwlr_foreign_toplevel_manager_v1_interface, 3);
+        uint32_t tl_v = version < 3 ? version : 3;
+        tl_manager = wl_registry_bind(r, name, &zwlr_foreign_toplevel_manager_v1_interface, tl_v);
         zwlr_foreign_toplevel_manager_v1_add_listener(tl_manager, &tl_mgr_listener, NULL);
         printf("bound: %s v%u\n", iface, version);
     } else if (strcmp(iface, zdwl_ipc_manager_v2_interface.name) == 0) {
-        ipc_manager = wl_registry_bind(r, name, &zdwl_ipc_manager_v2_interface, 3);
+        uint32_t v = version < 3 ? version : 3;
+        ipc_manager = wl_registry_bind(r, name, &zdwl_ipc_manager_v2_interface, v);
         zdwl_ipc_manager_v2_add_listener(ipc_manager, &ipc_mgr_listener, NULL);
         printf("bound: %s v%u\n", iface, version);
         try_create_ipc_output();
